@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import Popup from './components/Popup';
-import Header from './components/Header';
+import { useState } from "react";
+import Popup from "./components/Popup";
+import Header from "./components/Header";
 
-import './App.css';
-import Footer from './components/Footer';
-import Calendar from './components/Calendar';
-import Contents from './components/Contents';
+import "./App.css";
+import Footer from "./components/Footer";
+import Calendar from "./components/Calendar";
+import Contents from "./components/Contents";
 
 function App() {
   const [isPopupShow, setIsPopupShow] = useState(0);
@@ -17,7 +17,7 @@ function App() {
       <Contents />
       <Footer />
       <div className="dimmed" />
-      {/* <Popup /> */}
+      <Popup />
     </div>
   );
 }

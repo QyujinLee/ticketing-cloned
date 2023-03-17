@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default function Contents() {
   return (
@@ -11,7 +11,7 @@ export default function Contents() {
           <p className="time">10:00</p>
           <p className="status">매진</p>
         </div>
-        <div className="btn__content relaxed clicked">
+        <div className="btn__content relaxed selected">
           <p className="time">11:00</p>
           <p className="status">여유</p>
         </div>
