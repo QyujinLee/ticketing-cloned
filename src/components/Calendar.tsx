@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default function Calendar() {
   return (
@@ -7,7 +7,7 @@ export default function Calendar() {
         <div className="month">2월</div>
         <div className="dates">
           <div className="date__wrap">
-            <div className="date__container today">
+            <div className="date__container selected">
               <p className="date">22</p>
               <p className="day">수</p>
             </div>
@@ -73,13 +73,13 @@ export default function Calendar() {
         <div className="month">3월</div>
         <div className="dates">
           <div className="date__wrap">
-            <div className="date__container">
+            <div className="date__container inactive">
               <p className="date">1</p>
               <p className="day">토</p>
             </div>
           </div>
           <div className="date__wrap">
-            <div className="date__container">
+            <div className="date__container inactive">
               <p className="date">2</p>
               <p className="day">일</p>
             </div>
