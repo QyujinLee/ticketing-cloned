@@ -170,11 +170,9 @@
 }
 
 .month {
-  margin: 10px 10px 5px 15px;
-}
-
-.month {
   height: 17px;
+  margin: 10px 10px 5px 15px;
+  font-size: var(--font-micro);
 }
 
 .dates {
@@ -193,7 +191,7 @@
   width: 55px;
 }
 
-.date__container.today .date {
+.date__container.selected .date {
   border: 1px solid var(--color-mint-blue);
   border-radius: 25px;
   background-color: var(--color-mint-blue);
@@ -201,9 +199,17 @@
   font-weight: var(--weight-bold);
 }
 
-.date__container.today .day {
+.date__container.selected .day {
   color: var(--color-mint-blue);
   font-weight: var(--weight-bold);
+}
+
+.date__container.inactive .date {
+  color: var(--color-light-grey);
+}
+
+.date__container.inactive .day {
+  color: var(--color-light-grey);
 }
 
 .date__container.sunday p {
@@ -283,15 +289,16 @@
 }
 
 .btn__content.sold-out {
-  background-color: var(--color-light-grey);
+  background-color: var(--color-dark-white);
+  border-color: var(--color-dark-white);
 }
 
 .btn__content.sold-out .time {
-  color: var(--color-grey);
+  color: var(--color-light-grey);
 }
 
 .btn__content.sold-out .status {
-  color: var(--color-grey);
+  color: var(--color-light-grey);
 }
 
 .btn__content.relaxed .status {
