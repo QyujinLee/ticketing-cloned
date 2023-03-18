@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import moment from "moment";
 import "./App.css";
 
 import Popup from "./components/Popup";
@@ -7,15 +8,21 @@ import Footer from "./components/Footer";
 import Calendar from "./components/Calendar";
 import Contents from "./components/Contents";
 import { getBasicDayData, getDate, getSundayData } from "./api/api";
-import IDate from "./interfaces/IDate";
-import IBasic from "./interfaces/IBasic";
-import { ResponseData as ISunday } from "./interfaces/ISunday";
+import {
+  IDateData,
+  SelectedDateType,
+  SelectedTimeType,
+} from "./interfaces/IDate";
+import { IBasicData } from "./interfaces/IBasic";
+import { ISundayData } from "./interfaces/ISunday";
 
 function App() {
   const [isPopupShow, setIsPopupShow] = useState<boolean>(false);
-  const [dateData, setDateData] = useState<IDate>();
-  const [basicDayData, setBasicDayData] = useState<IBasic>();
-  const [sundayData, setSundayData] = useState<ISunday>();
+  const [dateData, setDateData] = useState<IDateData[]>();
+  const [basicDayData, setBasicDayData] = useState<IBasicData>();
+  const [sundayData, setSundayData] = useState<ISundayData>();
+  const [selectedDate, setSelectedDate] = useState<SelectedDateType>();
+  const [selectedTime, setSelectedTime] = useState<SelectedTimeType>();
 
   /**
    * json데이터 GET
@@ -28,6 +35,16 @@ function App() {
     setDateData(dateResponse);
     setBasicDayData(basicDayResponse);
     setSundayData(sundayResponse);
+
+    const initDate = moment(dateResponse[0].date);
+
+    // dateData 중 첫 번째 데이터로 set
+    setSelectedDate({
+      year: initDate.year(),
+      month: initDate.month() + 1,
+      date: initDate.date(),
+      isSunday: initDate.weekday() === 0,
+    });
   };
 
   useEffect(() => {
@@ -37,11 +54,26 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Calendar />
-      <Contents />
-      <Footer />
-      <div className="dimmed" />
-      <Popup />
+      <Calendar
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+        date={dateData}
+        setSelectedTime={setSelectedTime}
+      />
+      <Contents
+        selectedDate={selectedDate}
+        basicDayData={basicDayData}
+        sundayData={sundayData}
+        selectedTime={selectedTime}
+        setSelectedTime={setSelectedTime}
+      />
+      <Footer selectedTime={selectedTime} setIsPopupShow={setIsPopupShow} />
+      <Popup
+        isPopupShow={isPopupShow}
+        setIsPopupShow={setIsPopupShow}
+        selectedDate={selectedDate}
+        selectedTime={selectedTime}
+      />
     </div>
   );
 }

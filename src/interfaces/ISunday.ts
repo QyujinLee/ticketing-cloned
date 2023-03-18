@@ -20,7 +20,7 @@ export interface ITimeList {
   stockStatus: number;
 }
 
-export interface Data {
+export interface ISundayData {
   prdId: number;
   dplId: number;
   productName: string;
@@ -28,10 +28,12 @@ export interface Data {
   reserveDt: string;
   riderCount: number;
   timeList: ITimeList[];
+  ticketPrice: number;
+  ticketSalePrice: number;
 }
 
 export interface ResponseData {
   code: string;
   message: string;
-  data: Data;
+  data: ISundayData;
 }
